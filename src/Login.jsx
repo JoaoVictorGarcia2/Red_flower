@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Para redirecionar entre telas
+import { useNavigate } from 'react-router-dom'; 
 //import { supabase } from '../../supabaseClient';
 //import './Login.css';
 
@@ -9,30 +9,30 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate(); 
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError('');
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   setError('');
 
-    const { data: user, error } = await supabase
-      .from('user')
-      .select('*')
-      .eq('username', username)
-      .single();
+  //   const { data: user, error } = await supabase
+  //     .from('user')
+  //     .select('*')
+  //     .eq('username', username)
+  //     .single();
 
-    if (error || !user || user.password !== password) {
-      setError('Usuário ou senha incorretos!');
-      return;
-    }
+  //   if (error || !user || user.password !== password) {
+  //     setError('Usuário ou senha incorretos!');
+  //     return;
+  //   }
 
-    alert('Login realizado com sucesso!');
-    console.log('Usuário logado:', user);
+  //   alert('Login realizado com sucesso!');
+  //   console.log('Usuário logado:', user);
 
-  };
+  // };
 
   return (
     <div className="login-container">
       <div className="login-card">
-        <form onSubmit={handleLogin}>
+        <form>
           <h2>Seja bem-vindo</h2>
           {error && <p className="error">{error}</p>}
           <label>Usuário</label>
