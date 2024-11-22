@@ -1,52 +1,75 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
-//import { supabase } from '../../supabaseClient';
-//import './Login.css';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../config/supabaseClient';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginData, setLoginData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   setError('');
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError(''); 
 
-  //   const { data: user, error } = await supabase
-  //     .from('user')
-  //     .select('*')
-  //     .eq('username', username)
-  //     .single();
+    if (!loginData.username || !loginData.password) {
+      setError('Por favor, preencha todos os campos.');
+      return;
+    }
 
-  //   if (error || !user || user.password !== password) {
-  //     setError('Usuário ou senha incorretos!');
-  //     return;
-  //   }
+    try {
+      const { data: user, error } = await supabase
+        .from('user')
+        .select('*')
+        .eq('username', loginData.username)
+        .single();
 
-  //   alert('Login realizado com sucesso!');
-  //   console.log('Usuário logado:', user);
+      if (error || !user || user.password !== loginData.password) {
+        setError('Usuário ou senha incorretos!');
+        return;
+      }
 
-  // };
+      alert('Login realizado com sucesso!');
+      console.log('Usuário logado:', user);
+
+      navigate('/home');
+    } catch (error) {
+      console.error('Erro ao tentar fazer login:', error);
+      setError('Erro ao tentar fazer login. Tente novamente.');
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="login-container">
       <div className="login-card">
-        <form>
+        <form onSubmit={handleLogin}>
           <h2>Seja bem-vindo</h2>
           {error && <p className="error">{error}</p>}
-          <label>Usuário</label>
+
+          <label htmlFor="username">Usuário</label>
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="username"
+            name="username"
+            value={loginData.username}
+            onChange={handleChange}
             required
           />
-          <label>Senha</label>
+
+          <label htmlFor="password">Senha</label>
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            name="password"
+            value={loginData.password}
+            onChange={handleChange}
             required
           />
           <button type="submit">Entrar</button>
