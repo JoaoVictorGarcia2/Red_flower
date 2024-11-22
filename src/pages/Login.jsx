@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabaseClient';
-import './Login.css'; // Certifique-se de criar o arquivo Login.css para os estilos
+import './Login.css'; 
 import FLOR from './img/flor.png';
 
 const Login = () => {
