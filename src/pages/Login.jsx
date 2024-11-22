@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabaseClient';
+import './Login.css'; // Certifique-se de criar o arquivo Login.css para os estilos
+import FLOR from './img/flor.png';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ username: '', password: '' });
@@ -9,7 +11,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(''); 
+    setError('');
 
     if (!loginData.username || !loginData.password) {
       setError('Por favor, preencha todos os campos.');
@@ -85,6 +87,7 @@ const Login = () => {
           </button>
         </p>
       </div>
+      <img src={FLOR} alt="" />
     </div>
   );
 };

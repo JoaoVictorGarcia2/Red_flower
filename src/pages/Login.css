@@ -1,0 +1,80 @@
+/* Definindo o fundo da tela */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(5px); 
+  }
+  
+  /* Estilizando o cartão de login */
+  .login-card {
+    background-color: #f00; /* Fundo branco com transparência */
+    padding: 30px;
+    border-radius: 10px;
+    width: 380px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Estilo dos campos de entrada */
+  .login-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilo do título */
+  .login-card h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .login-card button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(179, 170, 170);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-card button:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Estilo para os textos de erro */
+  .error {
+    color: #ff6666;
+    font-size: 14px;
+  }
+  
+  /* Estilo para o texto de troca de tela */
+  .switch-text {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .switch-button {
+    background: none;
+    color: rgb(165, 42, 42);
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .switch-button:hover {
+    color: #cc0000;
+  }
+  
