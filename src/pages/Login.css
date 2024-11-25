@@ -1,22 +1,35 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+  backdrop-filter: blur(5px);
+}
+
+.alignment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    backdrop-filter: blur(5px); 
-  }
-  
-  .login-card {
-    background-color: #f00;
-    padding: 30px;
-    border-radius: 10px;
-    width: 380px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    color: #333;
-  }
+  display: flex;
+  width: 65%;
+  height: 90%; 
+}
+
+.login-card {
+  background-color: #f00;
+  padding: 30px;
+  border-radius: 4% 1% 1% 4%;
+  width: 35%;
+  text-align: center;
+  color: #333;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
   
   .login-card input {
     width: 100%;
@@ -49,6 +62,10 @@
   .login-card button:hover {
     background-color: #cc0000;
   }
+
+  .login-card h2 {
+    color: white;
+  }
   
   .error {
     color: #ff6666;
@@ -56,8 +73,8 @@
   }
   
   .switch-text {
-    margin-top: 15px;
-    font-size: 14px;
+    margin-top: -5px;
+    font-size: 15px;
   }
   
   .switch-button {
@@ -70,5 +87,10 @@
   
   .switch-button:hover {
     color: #cc0000;
+  }
+  
+  .imagem {
+    object-fit: cover;
+    width: 65%;
   }
   

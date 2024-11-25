@@ -49,45 +49,50 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <form onSubmit={handleLogin}>
-          <h2>Seja bem-vindo</h2>
-          {error && <p className="error">{error}</p>}
+    <div className='alignment'>
+      <div className='main'>
+        <div className="login-container">
+          <div className="login-card">
+            <form onSubmit={handleLogin}>
+              <h2>Seja bem-vindo</h2>
+              {error && <p className="error">{error}</p>}
 
-          <label htmlFor="username">Usuário</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={loginData.username}
-            onChange={handleChange}
-            required
-          />
+              <label htmlFor="username">Usuário</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={loginData.username}
+                onChange={handleChange}
+                required
+              />
 
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={loginData.password}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Entrar</button>
-        </form>
-        <p className="switch-text">
-          Não tem conta?{' '}
-          <button
-            type="button"
-            className="switch-button"
-            onClick={() => navigate('/signup')}
-          >
-            Criar conta
-          </button>
-        </p>
+              <label htmlFor="password">Senha</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleChange}
+                required
+              />
+              <button type="submit">Entrar</button>
+            </form>
+            
+          </div>
+          <img className='imagem' src={FLOR} alt="" />
+        </div>
       </div>
-      <img src={FLOR} alt="" />
+      <p className="switch-text">
+        Não tem conta?{' '}
+        <button
+          type="button"
+          className="switch-button"
+          onClick={() => navigate('/signup')}
+        >
+          Criar conta
+        </button>
+      </p>
     </div>
   );
 };
