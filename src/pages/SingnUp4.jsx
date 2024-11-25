@@ -5,45 +5,47 @@ import './Login.css';
 import FLOR from './img/flor.png';
 import USER from './img/user.png'
 
-const Login = () => {
-  const [loginData, setLoginData] = useState({ username: '', password: '' });
+const SignUp = () => {
+  const [cadastro, setCadastro] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
 
-    if (!loginData.username || !loginData.password) {
+    if (!cadastro.username || !cadastro.password) {
       setError('Por favor, preencha todos os campos.');
       return;
     }
 
     try {
-      const { data: user, error } = await supabase
-        .from('user')
-        .select('*')
-        .eq('username', loginData.username)
-        .single();
+      const { error } = await supabase.from('user').insert([
+        {
+          username: cadastro.username,
+          password: cadastro.password,
+        },
+      ]);
 
-      if (error || !user || user.password !== loginData.password) {
-        setError('Usuário ou senha incorretos!');
+      if (error) {
+        setError('Erro ao criar conta: Verifique se o username já existe.');
         return;
       }
 
-      alert('Login realizado com sucesso!');
-      console.log('Usuário logado:', user);
-
-      navigate('/home');
+      setSuccess('Conta criada com sucesso!');
+      setCadastro({ username: '', password: '' });
+      setTimeout(() => navigate('/'), 2000);
     } catch (error) {
-      console.error('Erro ao tentar fazer login:', error);
-      setError('Erro ao tentar fazer login. Tente novamente.');
+      console.error('Erro ao tentar cadastrar a conta:', error);
+      setError('Erro inesperado. Tente novamente');
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setLoginData((prevState) => ({
+    setCadastro((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -54,16 +56,16 @@ const Login = () => {
       <div className='main'>
         <div className="login-container">
           <div className="login-card">
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSignUp}>
               <img src= {USER} alt="" />
               <h2>Seja bem-vindo</h2>
               {error && <p className="error">{error}</p>}
-
+              {success && <p className="success">{success}</p>}
               <input
                 type="text"
                 id="username"
                 name="username"
-                value={loginData.username}
+                value={cadastro.username}
                 placeholder='Username:'
                 onChange={handleChange}
                 required
@@ -73,7 +75,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 name="password"
-                value={loginData.password}
+                value={cadastro.password}
                 placeholder='Senha:'
                 onChange={handleChange}
                 required
@@ -90,7 +92,7 @@ const Login = () => {
         <button
           type="button"
           className="switch-button"
-          onClick={() => navigate('/signup')}
+          onClick={() => navigate('/')}
         >
           Criar conta
         </button>
@@ -99,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
