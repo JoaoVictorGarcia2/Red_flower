@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../config/supabaseClient';
+import { supabase } from '../../config/supabaseClient';
 import './Login.css'; 
-import FLOR from './img/flor.png';
-import USER from './img/user.png'
+import FLOR from '../img/flor.png';
+import USER from '../img/user.png'
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ username: '', password: '' });
@@ -78,23 +78,24 @@ const Login = () => {
                 onChange={handleChange}
                 required
               />
-              <button type="submit">Entrar</button>
+              <button className='login_button' type="submit">Entrar</button>
+
+              <p className="switch-text">
+                Não tem conta?{' '}
+                <button
+                  type="button"
+                  className="switch-button"
+                  onClick={() => navigate('/signup')}
+                >
+                  Criar conta
+                </button>
+              </p>
             </form>
             
           </div>
           <img className='imagem' src={FLOR} alt="" />
         </div>
       </div>
-      <p className="switch-text">
-        Não tem conta?{' '}
-        <button
-          type="button"
-          className="switch-button"
-          onClick={() => navigate('/signup')}
-        >
-          Criar conta
-        </button>
-      </p>
     </div>
   );
 };

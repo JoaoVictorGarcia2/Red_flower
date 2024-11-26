@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../config/supabaseClient';
+import { supabase } from '../../config/supabaseClient';
 import './SingUp.css';
-import FLOR from './img/flor.png';
-import USER from './img/user.png'
+import FLOR from '../img/flor.png';
+import USER from '../img/user.png'
 
 
 const SignUp = () => {
@@ -63,7 +63,6 @@ const SignUp = () => {
               {error && <p className="error">{error}</p>}
               {success && <p className="success">{success}</p>}
 
-              <label htmlFor="username">Usuário</label>
               <input
                 type="text"
                 id="username"
@@ -74,7 +73,6 @@ const SignUp = () => {
                 required
               />
 
-              <label htmlFor="password">Senha</label>
               <input
                 type="password"
                 id="password"
@@ -84,23 +82,24 @@ const SignUp = () => {
                 onChange={handleChange}
                 required
               />
-              <button type="submit">Registrar</button>
+              <button className='sing_button' type="submit">Registrar</button>
+              <p className="s-text">
+                Já tem conta?{' '}
+                <button
+                  type="button"
+                  className="s-button"
+                  onClick={() => navigate('/')}
+                >
+                  Fazer login
+                </button>
+              </p>
             </form>
             
           </div>
           <img className='imagem' src={FLOR} alt="" />
         </div>
       </div>
-      <p className="switch-text">
-        Já tem conta?{' '}
-        <button
-          type="button"
-          className="switch-button"
-          onClick={() => navigate('/')}
-        >
-          Fazer login
-        </button>
-      </p>
+
     </div>
   );
 };

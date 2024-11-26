@@ -34,17 +34,17 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 100px;
 }
   
 .singUp-card input {
-  width: 75%;
-  height: 20px;
-  padding: 5px;
-  margin: 12px 0;
+  width: 90%;
+  height: 50px;
+  padding: 30px;
+  margin-top: 60px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 25px;
   background-color: #f9f9f9;
 }
   
@@ -54,20 +54,21 @@
   color: #333;
 }
   
-.singUp-card button {
-  margin-top: 30px;
-  width: 100%;
+.sing_button {
+  margin-top: 60px;
+  width: 80%;
+  height: 50px;
   padding: 12px;
   background-color: rgb(255, 255, 255);
   color: rgb(255, 0, 0);
   border: none;
-  border-radius: 3px;
-  font-size: 16px;
+  border-radius: 5px;
+  font-size: 25px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
   
-.singUp-card button:hover {
+.sing_button:hover {
   background-color: #a50000;
   color: white;
 }
@@ -82,20 +83,37 @@
 }
 
 .switch-text {
-  margin-top: -5px;
-  font-size: 15px;
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  padding-top: 130px;
 }
   
 .switch-button {
   background: none;
-  color: rgb(165, 42, 42);
+  color: rgb(255, 178, 178);
   border: none;
   text-decoration: underline;
   cursor: pointer;
+  font-size: 25px;
+}
+
+.s-text {
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  padding-top: 130px;
+}
+  
+.s-button {
+  background: none;
+  color: rgb(255, 178, 178);
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 25px;
 }
 
 .switch-button:hover {
-  color: #cc0000;
+  color: #000000;
 }
 
 .imagem {
